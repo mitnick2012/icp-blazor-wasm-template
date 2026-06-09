@@ -72,14 +72,6 @@ npm install -g @icp-sdk/icp-cli @icp-sdk/ic-wasm
 npm install -g ic-mops
 ```
 
-## Prerequisites
-
-### icp-cli
-```bash
-npm install -g @icp-sdk/icp-cli @icp-sdk/ic-wasm
-npm install -g ic-mops
-```
-
 ### .NET 10 SDK
 
 **Method 1: Ubuntu 24.04 LTS or newer (APT)**
