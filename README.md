@@ -147,10 +147,10 @@ If `icp network start` exits with status 101, check the log:
 ```bash
 cat .icp/cache/networks/local/network-launcher/stderr.log
 ```
-Common cause: Docker container mapped to port 8000.
+Common cause: process using port 8000.
 ```bash
-docker ps | grep 8000
-docker stop <container>
+sudo ss -tulpn | grep :8080
+sudo kill -9 <processId>
 ```
 ## License
 
