@@ -2,3 +2,8 @@
 canisters:
   - backend
   - frontend
+networks:
+  - name: local
+    mode: managed
+    gateway:
+      port: 8002

@@ -5,7 +5,8 @@
     "build": "webpack"
   },
   "dependencies": {
-    "@dfinity/agent": "^2.0.0"
+    "@dfinity/agent": "^2.0.0",
+    "@dfinity/principal": "^2.0.0"
   },
   "devDependencies": {
     "webpack": "^5.0.0",

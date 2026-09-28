@@ -15,6 +15,12 @@ frontend/BlazorFrontend/wwwroot/icpAgent.js
 .DS_Store
 Thumbs.db
 
+# Identity / secrets - never commit plaintext PEM or password files
+*.pem
+*.key
+.icp-password
+.seed.txt
+
 # Logs
 *.log
 npm-debug.log*
