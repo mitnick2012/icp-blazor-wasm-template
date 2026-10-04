@@ -1,0 +1,18 @@
+[template]
+name = "Hello World ICP app"
+description = "Full-stack ICP app: Blazor WASM (.NET 10) frontend + Motoko backend, deployed fully on-chain"
+
+# Never run Liquid over binary assets (non-UTF8 files are copied verbatim anyway).
+exclude = ["frontend/vendor/**"]
+
+# Never copy .NET build artifacts if an IDE design-time build ever creates them in
+# this working copy (bin/obj contain MSBuild cache files that break Liquid and
+# would pollute generated projects). Missing paths are ignored. Likewise never
+# ship a package-lock.json: this is a starting point, not a reproducible build,
+# so scaffolders must resolve fresh (latest compatible) versions on `npm install`.
+ignore = [
+  "frontend/{{project-name}}/bin",
+  "frontend/{{project-name}}/obj",
+  "frontend/{{project-name}}/node_modules",
+  "frontend/{{project-name}}/package-lock.json",
+]

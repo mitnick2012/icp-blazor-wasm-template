@@ -1,0 +1,40 @@
+# ICP - cache only, keep .icp/data/ for canister IDs
+.icp/cache/
+
+# .NET build output
+bin/
+obj/
+
+# Node
+node_modules/
+
+# Lock files - the template is a starting point, not a reproducible build:
+# scaffolders get the latest compatible versions (bug fixes and security
+# patches) on `npm install`, so pinning them here would ship stale versions.
+package-lock.json
+Cargo.lock
+
+# webpack generated output (regenerated on build)
+**/wwwroot/icpAgent.js*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.vscode/
+.idea/
+**/*~
+
+# Local env files
+.env
+
+# Identity / secrets - never commit plaintext PEM or password files
+*.pem
+*.key
+.icp-password
+.seed.txt
+
+# Logs
+*.log
+npm-debug.log*
