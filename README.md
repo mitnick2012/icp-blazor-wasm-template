@@ -24,7 +24,7 @@ A hello world template combining **Blazor WebAssembly (.NET 10)** on the fronten
 |----------|-------------------------------------|
 | Frontend | Blazor WebAssembly (.NET 10)        |
 | Backend  | Motoko canister                     |
-| Bridge   | @dfinity/agent (webpack bundle)     |
+| Bridge   | @icp-sdk/core (webpack bundle)      |
 | Platform | Internet Computer (ICP)             |
 | CLI      | icp-cli                             |
 
@@ -51,7 +51,7 @@ icp-blazor-hello/
         ├── Program.cs
         ├── App.razor
         ├── _Imports.razor            # required — Blazor namespace imports
-        ├── package.json              # webpack + @dfinity/agent
+        ├── package.json              # webpack + @icp-sdk/core
         ├── webpack.config.js         # bundles icpAgent.ts → wwwroot/icpAgent.js
         ├── tsconfig.json
         ├── src/
@@ -73,11 +73,11 @@ icp-blazor-hello/
 Home.razor (C#)
   → IcpAgentService.cs (IJSRuntime)
     → window.IcpAgent.* (webpack bundle, defer loaded)
-      → @dfinity/agent
+      → @icp-sdk/core (Agent module: https://js.icp.build/core/latest/libs/agent)
         → Motoko backend canister on ICP
 ```
 
-The key insight: use **webpack** to bundle `@dfinity/agent` into a plain JS file
+The key insight: use **webpack** to bundle `@icp-sdk/core` into a plain JS file
 loaded with `defer`, not as an ES module. This avoids the race condition between
 the module loader and Blazor's JS interop system.
 

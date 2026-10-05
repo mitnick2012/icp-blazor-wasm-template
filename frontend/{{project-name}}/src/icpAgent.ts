@@ -1,5 +1,9 @@
-import { Actor, HttpAgent } from "@dfinity/agent";
-import { Principal } from "@dfinity/principal";
+// Agent bridge for ICP canisters.
+//
+// SDK: @icp-sdk/core (see the Agent module docs:
+// https://js.icp.build/core/latest/libs/agent)
+import { Actor, HttpAgent } from "@icp-sdk/core/agent";
+import { Principal } from "@icp-sdk/core/principal";
 
 const idlFactory = ({ IDL }: any) =>
   IDL.Service({
@@ -42,7 +46,7 @@ async function getActor() {
       // Local replica only: a skewed host clock (common with WSL/Windows, where
       // the Windows clock and the WSL replica clock can differ by an hour)
       // makes the replica's certificate look "signed in the future", and
-      // @dfinity/agent only tolerates 5 minutes of skew:
+      // @icp-sdk/core only tolerates 5 minutes of skew:
       //   "Invalid certificate: Certificate is signed more than 5 minutes in
       //    the future"
       // Query responses from a local replica are already trust-on-first-use via
@@ -64,7 +68,7 @@ async function getActor() {
       // ledger (ryjl3-tyaaa-aaaaa-aaaba-cai), which does not exist on a freshly
       // created local replica.
       try {
-        await agent.syncTime(Principal.fromText(canisterId));
+        await agent.syncTime({ canisterId: Principal.fromText(canisterId) });
       } catch (err) {
         console.warn(
           "[icpAgent] syncTime failed; update calls may be rejected if the host clock is skewed.",
